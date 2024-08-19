@@ -1,0 +1,41 @@
+[tool.poetry]
+name = "incari"
+version = "0.1.0"
+description = "Create a Text to Sequence of Nodes using AI"
+authors = ["praveer kumar <praveerkumar17@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [
+    { include = "incari", from = "." },
+]
+
+[tool.poetry.dependencies]
+python = "~3.10"
+sentencepiece = "^0.2.0"
+numpy = "1.23.5"
+accelerate = "^0.33.0"
+bitsandbytes = "^0.43.3"
+transformers = {extras = ["torch"], version = "^4.44.0"}
+huggingface-hub = "^0.24.5"
+torch = {version = "^2.4.0+cu118", source = "pytorch"}
+datasets = "^2.21.0"
+
+[tool.poetry.scripts]
+main = "incari.__main__:main"
+
+[[tool.poetry.source]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu118"
+priority = "explicit"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.3.2"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
